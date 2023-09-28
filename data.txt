@@ -1,0 +1,14 @@
+P01 | Laptop | 10 | 850.0
+P02 | Headphones | 15 | 50.0
+P03 | Monitor | 10 | 200.0
+P04 | Keyboard | 25 | 30.0
+P05 | Mouse | 40 | 15.0
+P06 | Desk | 5 | 150.0
+P07 | Chair | 30 | 50.0
+P08 | Printer | 8 | 120.0
+P09 | Smartphone | 12 | 400.0
+P10 | Tablet | 18 | 300.0
+P11 | Camera | 6 | 250.0
+P12 | Speaker | 22 | 40.0
+
+
