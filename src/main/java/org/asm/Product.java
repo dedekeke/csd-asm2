@@ -1,6 +1,7 @@
 package org.asm;
-
+// TODO change class to record
 public class Product {
+    // TODO bcode needed?
     private String bcode;
     private String title;
     private int quantity;

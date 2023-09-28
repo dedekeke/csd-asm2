@@ -1,7 +1,7 @@
 package org.asm;
 
 public class MyQueue<T> {
-
+// TODO record
     private Node<T> head;
     private Node<T> tail;
 

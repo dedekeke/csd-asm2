@@ -181,6 +181,7 @@ public class MyList<T> {
             System.out.println(current.getInfo().toString());
             current = current.getNext();
         }
+        System.out.println("Nothing's here.");
     }
 
     public void loadFromFile(String filename) {

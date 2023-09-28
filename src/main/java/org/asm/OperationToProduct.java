@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+// recheck the methods
 public class OperationToProduct {
     // Implement the required methods: getAllItemsFromFile, writeAllItemsToFile, searchByCode,
     // deleteByCode, sortByCode, convertToBinary, addLast, and addFirst
@@ -30,7 +31,7 @@ public class OperationToProduct {
             System.out.println("Data loaded from file: " + filename);
         } catch (IOException | NumberFormatException e) {
             System.out.println("Error reading file: " + filename);
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
