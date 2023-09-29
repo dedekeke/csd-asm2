@@ -15,6 +15,7 @@ public class OperationToProduct {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split("\\|");
+                if (line.isEmpty()){ return; }
                 if (data.length == 4) {
                     String code = data[0].trim();
                     String name = data[1].trim();
@@ -25,7 +26,6 @@ public class OperationToProduct {
                     productList.insertToTail(product);
                 } else {
                     System.out.println("Invalid data format in the file: " + filename);
-                    System.out.println(data.length);
                 }
             }
             System.out.println("Data loaded from file: " + filename);
@@ -55,15 +55,17 @@ public class OperationToProduct {
         String searchCode = scanner.next();
 
         Node<Product> current = productList.getHead();
+        if (current == null) { return; }
+        if (!current.getInfo().getBcode().contains(searchCode)) {
+            System.out.println("Product with code " + searchCode + " not found.");
+        }
         while (current != null) {
-            if (current.getInfo().getBcode().equalsIgnoreCase(searchCode)) {
-                System.out.println("Product found:");
+            if (current.getInfo().getBcode().contains(searchCode)) {
                 System.out.println(current);
-                return;
             }
             current = current.getNext();
         }
-        System.out.println("Product with code " + searchCode + " not found.");
+        
     }
 
     public void deleteByCode(MyList<Product> productList) {

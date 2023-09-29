@@ -1,4 +1,5 @@
 package org.asm;
+
 import java.util.Scanner;
 
 public class Main {
@@ -35,7 +36,6 @@ public class Main {
             choice = scanner.nextInt();
 
             switch (choice) {
-                // TODO bug here
                 case 1 -> {
                     operationToProduct.getAllItemsFromFile("data.txt", productList);
                     productList.displayAll();
@@ -85,4 +85,3 @@ public class Main {
         scanner.close();
     }
 }
-

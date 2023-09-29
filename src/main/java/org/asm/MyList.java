@@ -42,8 +42,6 @@ public class MyList<T> {
         }
     }
 
-
-
     public void insertAfterPosition(int position, T item) {
         int listLength = length();
         if (position < 0 || position > listLength) {
@@ -73,9 +71,6 @@ public class MyList<T> {
             tail = newNode;
         }
     }
-
-
-
 
     public void deleteTail() {
         if (isEmpty()) {
@@ -177,18 +172,19 @@ public class MyList<T> {
 
     public void displayAll() {
         Node<T> current = head;
+        if (current == null) {
+            System.out.println("Nothing's here");
+        }
         while (current != null) {
             System.out.println(current.getInfo().toString());
             current = current.getNext();
         }
-        System.out.println("Nothing's here.");
     }
 
     public void loadFromFile(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // Assuming each line in the file contains a single item
                 T item = (T) line;
                 insertToTail(item);
             }
@@ -221,7 +217,3 @@ public class MyList<T> {
         return nodeList;
     }
 }
-
-
-
-
