@@ -1,5 +1,5 @@
 package org.asm;
-// TODO record
+// TO-DO record
 public class MyStack<T> {
     private Node<T> head;
 

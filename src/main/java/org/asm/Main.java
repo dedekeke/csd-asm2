@@ -52,10 +52,9 @@ public class Main {
                     operationToProduct.sortByCode(productList);
                     System.out.println("Product list sorted successfully!");
                 }
+                // TO-DO convert to binary using recursion
                 case 8 -> {
-                    System.out.print("Enter a number to convert to binary: ");
-                    int number = scanner.nextInt();
-                    operationToProduct.convertToBinary(number);
+                    operationToProduct.convertToBinary();
                 }
                 case 9 -> {
                     Node<Product> currentStack = productList.getHead();

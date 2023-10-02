@@ -1,6 +1,5 @@
 package org.asm;
 
-// TODO record
 public class Node<T> {
     private T info;
     private Node<T> next;

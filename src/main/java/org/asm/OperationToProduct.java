@@ -56,11 +56,11 @@ public class OperationToProduct {
 
         Node<Product> current = productList.getHead();
         if (current == null) { return; }
-        if (!current.getInfo().getBcode().contains(searchCode)) {
+        if (!current.getInfo().bcode().contains(searchCode)) {
             System.out.println("Product with code " + searchCode + " not found.");
         }
         while (current != null) {
-            if (current.getInfo().getBcode().contains(searchCode)) {
+            if (current.getInfo().bcode().contains(searchCode)) {
                 System.out.println(current);
             }
             current = current.getNext();
@@ -75,7 +75,7 @@ public class OperationToProduct {
 
         Node<Product> current = productList.getHead();
         while (current != null) {
-            if (current.getInfo().getBcode().equalsIgnoreCase(deleteCode)) {
+            if (current.getInfo().bcode().equalsIgnoreCase(deleteCode)) {
                 productList.deleteElement(current.getInfo());
                 System.out.println("Product with code " + deleteCode + " deleted successfully.");
                 return;
@@ -91,7 +91,7 @@ public class OperationToProduct {
             Node<Product> current = productList.getHead();
             for (int j = 0; j < n - i - 1; j++) {
                 if (current.getNext() != null &&
-                        current.getInfo().getBcode().compareToIgnoreCase(current.getNext().getInfo().getBcode()) > 0) {
+                        current.getInfo().bcode().compareToIgnoreCase(current.getNext().getInfo().bcode()) > 0) {
                     productList.swap(current, current.getNext());
                 }
                 current = current.getNext();
