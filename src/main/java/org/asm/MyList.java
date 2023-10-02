@@ -139,12 +139,10 @@ public class MyList<T> {
         return head;
     }
 
-    // Add a method to get the tail node if needed
     public Node<T> getTail() {
         return tail;
     }
 
-    // Add a method to get a specific node at a position if needed
     public Node<T> getNodeAtPosition(int position) {
         if (position < 0 || position >= length()) {
             return null;
@@ -168,7 +166,6 @@ public class MyList<T> {
         }
     }
 
-    // ... (existing methods)
 
     public void displayAll() {
         Node<T> current = head;

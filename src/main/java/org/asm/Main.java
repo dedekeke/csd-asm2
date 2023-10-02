@@ -13,7 +13,7 @@ public class Main {
         System.out.println("5. Search by product code");
         System.out.println("6. Delete by product code");
         System.out.println("7. Sort by product code");
-        System.out.println("8. Convert to binary");
+        System.out.println("8. Convert first item's quantity to binary");
         System.out.println("9. Load data from file and add to stack");
         System.out.println("10. Load data from file and add to queue");
         System.out.println("11. Shuffle!!!");
@@ -52,9 +52,10 @@ public class Main {
                     operationToProduct.sortByCode(productList);
                     System.out.println("Product list sorted successfully!");
                 }
-                // TO-DO convert to binary using recursion
                 case 8 -> {
-                    operationToProduct.convertToBinary();
+                    int n = productList.getHead().getInfo().quantity();
+                    int result = operationToProduct.convertToBinary(n);
+                    System.out.println("Current number: " + n  + " to binary: " + result);
                 }
                 case 9 -> {
                     Node<Product> currentStack = productList.getHead();

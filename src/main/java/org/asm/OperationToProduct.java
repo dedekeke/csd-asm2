@@ -1,5 +1,7 @@
 package org.asm;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,12 +12,17 @@ import java.util.Scanner;
 public class OperationToProduct {
     // Implement the required methods: getAllItemsFromFile, writeAllItemsToFile, searchByCode,
     // deleteByCode, sortByCode, convertToBinary, addLast, and addFirst
+    private static final Logger logger = Logger.getLogger(Main.class);
+    Scanner scanner = new Scanner(System.in);
+
     public void getAllItemsFromFile(String filename, MyList<Product> productList) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split("\\|");
-                if (line.isEmpty()){ return; }
+                if (line.isEmpty()) {
+                    return;
+                }
                 if (data.length == 4) {
                     String code = data[0].trim();
                     String name = data[1].trim();
@@ -31,7 +38,7 @@ public class OperationToProduct {
             System.out.println("Data loaded from file: " + filename);
         } catch (IOException | NumberFormatException e) {
             System.out.println("Error reading file: " + filename);
-            e.printStackTrace();
+            logger.error("An IOException occurred:", e);
         }
     }
 
@@ -45,27 +52,28 @@ public class OperationToProduct {
             }
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("An IOException occurred:", e);
         }
     }
 
     public void searchByCode(MyList<Product> productList) {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the product code (bcode) to search for: ");
         String searchCode = scanner.next();
 
         Node<Product> current = productList.getHead();
-        if (current == null) { return; }
-        if (!current.getInfo().bcode().contains(searchCode)) {
-            System.out.println("Product with code " + searchCode + " not found.");
+        if (current == null) {
+            System.out.println("Product list is empty.");
+            return;
         }
         while (current != null) {
+            if (current.getInfo().bcode().equals(searchCode)) {
+                System.out.println(current);
+            }
             if (current.getInfo().bcode().contains(searchCode)) {
                 System.out.println(current);
             }
             current = current.getNext();
         }
-        
     }
 
     public void deleteByCode(MyList<Product> productList) {
@@ -89,9 +97,11 @@ public class OperationToProduct {
         int n = productList.length();
         for (int i = 0; i < n - 1; i++) {
             Node<Product> current = productList.getHead();
+
             for (int j = 0; j < n - i - 1; j++) {
                 if (current.getNext() != null &&
-                        current.getInfo().bcode().compareToIgnoreCase(current.getNext().getInfo().bcode()) > 0) {
+//                        current.getInfo().bcode().compareToIgnoreCase(current.getNext().getInfo().bcode()) > 0) {
+                        Long.parseLong(current.getInfo().bcode()) > Long.parseLong(current.getNext().getInfo().bcode())) {
                     productList.swap(current, current.getNext());
                 }
                 current = current.getNext();
@@ -99,21 +109,14 @@ public class OperationToProduct {
         }
     }
 
-    public void convertToBinary(int number) {
-        MyStack<Integer> stack = new MyStack<>();
-        while (number > 0) {
-            stack.push(number % 2);
-            number /= 2;
+    public int convertToBinary(int n) {
+        if (n == 1) {
+            return 1;
         }
-        System.out.print("Binary: ");
-        while (!stack.isEmpty()) {
-            System.out.print(stack.pop());
-        }
-        System.out.println();
+        return convertToBinary(n / 2) * 10 + n % 2;
     }
 
     public void addLast(MyList<Product> productList) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter product details:");
         System.out.print("ID (bcode): ");
         String bcode = scanner.next();
@@ -130,7 +133,6 @@ public class OperationToProduct {
     }
 
     public void addFirst(MyList<Product> productList) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter product details:");
         System.out.print("ID (bcode): ");
         String bcode = scanner.next();

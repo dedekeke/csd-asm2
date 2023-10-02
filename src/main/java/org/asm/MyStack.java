@@ -1,14 +1,13 @@
 package org.asm;
-// TO-DO record
+
 public class MyStack<T> {
     private Node<T> head;
 
-    // Constructor
+
     public MyStack() {
         head = null;
     }
 
-    // Implement the required methods: push, pop, isEmpty, and displayAll
     public void push(T item) {
         head = new Node<>(item, head);
     }
