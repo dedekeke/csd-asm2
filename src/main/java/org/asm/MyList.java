@@ -178,6 +178,7 @@ public class MyList<T> {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void loadFromFile(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;

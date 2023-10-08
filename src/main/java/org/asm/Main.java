@@ -3,7 +3,6 @@ package org.asm;
 import java.util.Scanner;
 
 public class Main {
-
     public static void showMenu() {
         System.out.println("\n---------------------------------------------------");
         System.out.println("1. Load data from file and add to the end");
@@ -58,6 +57,7 @@ public class Main {
                     System.out.println("Current number: " + n  + " to binary: " + result);
                 }
                 case 9 -> {
+                    operationToProduct.getAllItemsFromFile("data.txt", productList);
                     Node<Product> currentStack = productList.getHead();
                     while (currentStack != null) {
                         productStack.push(currentStack.getInfo());
@@ -66,6 +66,7 @@ public class Main {
                     productStack.displayAll();
                 }
                 case 10 -> {
+                    operationToProduct.getAllItemsFromFile("data.txt", productList);
                     Node<Product> currentQueue = productList.getHead();
                     while (currentQueue != null) {
                         productQueue.enqueue(currentQueue.getInfo());

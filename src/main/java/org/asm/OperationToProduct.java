@@ -20,6 +20,7 @@ public class OperationToProduct {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split("\\|");
+                // check if line empty
                 if (line.isEmpty()) {
                     return;
                 }
@@ -66,11 +67,12 @@ public class OperationToProduct {
             return;
         }
         while (current != null) {
-            if (current.getInfo().bcode().equals(searchCode)) {
-                System.out.println(current);
-            }
             if (current.getInfo().bcode().contains(searchCode)) {
-                System.out.println(current);
+                if (current.getInfo().bcode().equals(searchCode)) {
+                    System.out.println(current);
+                } else {
+                    System.out.println(current);
+                }
             }
             current = current.getNext();
         }
@@ -128,7 +130,7 @@ public class OperationToProduct {
         double price = scanner.nextDouble();
 
         Product newProduct = new Product(bcode, title, quantity, price);
-        productList.insertAfterPosition(productList.length() - 1, newProduct);
+        productList.insertAfterPosition(productList.length(), newProduct);
         System.out.println("Product added successfully!");
     }
 
