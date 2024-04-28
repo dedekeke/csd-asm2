@@ -40,7 +40,10 @@ public class Main {
                     productList.displayAll();
                 }
                 case 2 -> operationToProduct.addLast(productList);
-                case 3 -> productList.displayAll();
+                case 3 -> {
+                    productList.displayAll();
+                    operationToProduct.writeAllItemsToFile("console_output.txt", productList);
+                }
                 case 4 -> {
                     operationToProduct.writeAllItemsToFile("data.txt", productList);
                     System.out.println("Product list saved successfully!");

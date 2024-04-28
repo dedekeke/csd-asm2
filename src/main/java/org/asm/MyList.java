@@ -166,7 +166,6 @@ public class MyList<T> {
         }
     }
 
-
     public void displayAll() {
         Node<T> current = head;
         if (current == null) {
